@@ -1,0 +1,18 @@
+{
+  "llm": {
+    "provider": "openai",
+    "baseUrl": "https://YOUR-PROVIDER/v1",
+    "apiKey": "REPLACE_ME",
+    "model": "YOUR-MODEL-ID",
+    "format": "json_object",
+    "maxTokens": 6000,
+    "inputPerMillion": 0,
+    "outputPerMillion": 0,
+    "priceConfigured": false
+  },
+  "models": {},
+  "budget": {
+    "project": 50,
+    "currency": "USD"
+  }
+}

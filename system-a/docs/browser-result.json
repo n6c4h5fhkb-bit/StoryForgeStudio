@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "aProject": "a_85a663d8a8f34419",
+  "bProject": "b_b392bbfd8b0442e0",
+  "checks": [
+    "TXT ingestion and full-book analysis",
+    "novel adoption",
+    "SceneExport v4",
+    "natural-language experience capture",
+    "film and fast drama version isolation",
+    "automatic assets/director choice",
+    "shot adoption",
+    "reference fee preview and explicit adoption",
+    "generation unit fee preview and interval import",
+    "actual video interval and end-state adoption",
+    "390px no overflow",
+    "no browser errors"
+  ],
+  "mediaGenerated": "local demo image and video only",
+  "paidCalls": false
+}

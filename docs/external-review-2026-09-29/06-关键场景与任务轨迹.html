@@ -1,0 +1,84 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>关键场景与任务轨迹</title><style>
+:root{color-scheme:light;--ink:#24333a;--muted:#67767b;--accent:#215b5b;--paper:#fff;--line:#dce5e6}
+*{box-sizing:border-box}body{margin:0;background:#f3f6f6;color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",sans-serif;font-size:15px;line-height:1.85}a{color:var(--accent);text-underline-offset:3px}
+header{position:sticky;top:0;z-index:3;background:#173c42;color:#fff;padding:12px 24px;display:flex;gap:18px;align-items:center;justify-content:space-between}header a{color:#fff;text-decoration:none}header small{opacity:.75}button{border:1px solid #94b6b8;background:transparent;color:inherit;border-radius:6px;padding:7px 12px;cursor:pointer}header input{border:1px solid #729b9f;border-radius:5px;padding:7px;background:#fff;color:#24333a;width:190px}
+.layout{max-width:1510px;margin:auto;display:grid;grid-template-columns:270px minmax(0,1fr);gap:24px;padding:26px}aside{position:sticky;top:80px;align-self:start;max-height:calc(100vh - 108px);overflow:auto;padding:10px 10px 18px;font-size:13px}aside a{display:block;text-decoration:none;padding:5px 7px;line-height:1.55;border-left:2px solid transparent}aside a:hover{background:#e2eded;border-color:var(--accent)}aside .sub{padding-left:20px;font-size:12px;color:var(--muted)}main{background:var(--paper);padding:38px 44px;min-width:0;border:1px solid var(--line);border-radius:9px}
+h1{font-size:29px;line-height:1.4;margin:0 0 20px}h2{font-size:22px;border-top:1px solid var(--line);padding-top:28px;margin:34px 0 16px;scroll-margin-top:85px}h3{font-size:17px;margin-top:25px;scroll-margin-top:85px}h4{font-size:15px}p{margin:13px 0}strong{color:#153c43}code{font-family:Consolas,monospace;font-size:12.5px;overflow-wrap:anywhere;background:#eff4f5;padding:2px 4px;border-radius:3px}pre{white-space:pre;overflow:auto;background:#eef4f4;border-left:3px solid #609594;padding:18px;line-height:1.7}pre code{background:none;padding:0;overflow-wrap:normal}.table-wrap{max-width:100%;overflow:auto;margin:18px 0}table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.7}th,td{text-align:left;padding:10px 12px;border:1px solid var(--line);vertical-align:top}th{background:#e7f0f0;color:#244d52}tr:nth-child(even) td{background:#fafcfc}li{margin:6px 0}footer{color:var(--muted);font-size:12px;margin-top:35px;border-top:1px solid var(--line);padding-top:15px}.search-status{font-size:12px;min-width:70px}.highlight{background:#fff0ba;border-radius:4px;outline:2px solid #fff0ba}
+@media(max-width:900px){.layout{grid-template-columns:1fr;padding:12px}aside{position:static;max-height:220px;border:1px solid var(--line);border-radius:6px}main{padding:24px 18px}header{padding:10px 12px;flex-wrap:wrap;gap:8px}header small{display:none}header input{width:145px}h1{font-size:24px}pre{font-size:12px}th,td{min-width:110px}}
+@media print{body{background:#fff;font-size:10pt;line-height:1.65}header,aside,.search-status{display:none}.layout{display:block;padding:0}main{padding:0;border:none}h1{font-size:22pt}h2{font-size:16pt;break-after:avoid}h3{break-after:avoid}table{font-size:9pt}thead{display:table-header-group}tr{break-inside:avoid}.table-wrap{overflow:visible}pre{white-space:pre-wrap;overflow:visible;font-size:8.5pt;break-inside:avoid}code{font-size:9pt}.highlight{background:none;outline:none}@page{size:A4;margin:17mm}}
+</style></head><body><header><a href="00-阅读入口.html">A/B 外部评审 · 2026-09-29</a><small>当前实现 / 待完善能力 / 验证边界</small><div><input id="search" aria-label="搜索文档" placeholder="搜索 · 回车下一处"><button id="next">下一处</button> <span class="search-status" id="search-status"></span> <button id="print">打印 / 保存 PDF</button></div></header><div class="layout"><aside aria-label="目录"><a class="" href="#section-2">1. 上传全本，只改编前 1–5 章</a><a class="" href="#section-3">2. 同一故事的电影版与快节奏短剧版</a><a class="" href="#section-4">3. 开盒、取物、交接、容纳移动</a><a class="" href="#section-5">4. 预演、倒叙与对白覆盖</a><a class="" href="#section-6">5. 未通过候选的局部返修</a><a class="" href="#section-7">6. 视频采用区间与强承接</a><a class="" href="#section-8">7. 反馈学习与撤销</a><a class="" href="#section-9">8. 故障与恢复</a></aside><main><h1 id="section-1">关键场景与任务轨迹</h1>
+<p>本文件用虚构作品说明设计。ID、调用时间和内容均为示例，不是生产项目数据，也不是可直接导入的完整协议样本。每个例子区分当前路径和需要验证的目标。</p>
+<h2 id="section-2">1. 上传全本，只改编前 1–5 章</h2>
+<pre><code data-language="text">输入：整本 TXT，约 80 万字；本轮选择原书前 5 章
+程序：保存 source/text/sha256 → 建索引 → 确認单元和原章节对应
+程序：选择 start/end 的字符范围；检查原文和完整任务资料限制
+会话：A / structure / novel:&lt;sourceId&gt; → 首次 snapshot
+模型：返回完整场景、人物、道具、初态、事件和来源依据
+程序：检查引用、范围、事件回放与旧稿保护
+会话：A / reviewer / review:novel:&lt;sourceId&gt; → 独立检查来源和候选
+结果：保存 proposed 草稿 + 审查尝试 → 用户阅读／采用
+下一轮：同一 author/reviewer scope 继续，仅发差异及必要前情</code></pre>
+<p>本轮不能自动触发整本数百单元深读；未读后文不假装已理解。当前单次选段原文 80k 上限、任务字符配置和阅读单元切分仍限制大范围。显式全书深读另用 novel-analysis 会话；改编复核覆盖不能等同于专项深读。</p>
+<h2 id="section-3">2. 同一故事的电影版与快节奏短剧版</h2>
+<p>故事事实：女孩拿到父亲遗留盒子，发现地址，决定去旧仓库。身份、地址来源、父亲失踪和她的决定受保护。</p>
+<div class="table-wrap"><table><thead><tr><th>表达点</th><th>电影倾向</th><th>短剧倾向</th></tr></thead><tbody><tr><td>入场</td><td>先建立她与遗物的关系，声音和停顿承载情绪</td><td>尽早进入争夺盒子的冲突</td></tr><tr><td>解释</td><td>通过手部动作、旧信和对话回避呈现</td><td>用对抗对白快速揭示盒子价值</td></tr><tr><td>线索</td><td>延迟完整地址，先让观众看到她的反应</td><td>在冲突推进中明确新信息</td></tr><tr><td>段尾</td><td>情绪和空间转变，允许留白</td><td>兑现选择后留下新的行动压力</td></tr></tbody></table></div>
+<p>会话分别为 shooting:cinema 和 shooting:fast_drama，各有 review 会话，来源不变。每个删并块都有映射和理由，分镜只读采用拍摄版。</p>
+<p>当前可保存两个拍摄稿；但单项目 activeShootingId 只能指一个。真正验收应要求两个分支各有独立镜头、媒体和采用指针，切换不互相改写；当前尚未完成这种分支隔离。</p>
+<h2 id="section-4">3. 开盒、取物、交接、容纳移动</h2>
+<pre><code data-language="text">初态：
+  人物 A 在 room；人物 B 在 room
+  box 在 A 手里；lid=closed；contentsKnown=true
+  key 在 box 内；key.active=true
+
+E1：A 打开盒盖
+  box.lid: closed → open
+E2：A 取出钥匙
+  key.pos: inside(box) → held_by(A)
+E3：A 把钥匙交给 B
+  key.pos: held_by(A) → held_by(B)
+E4：A 携盒离开；B 留在原地
+  A.pos: at(room) → at(corridor)，显式声明移动</code></pre>
+<p>程序需拒绝：未 E1 就从封闭盒子取物；E3 后又无依据显示钥匙在 A 手里；B 在另一地点但没有过渡就接物。若 key 始终 inside(box)，移动盒子会通过包含关系带着 key，不应独立产生第二把钥匙。</p>
+<p>素材区别：盒子稳定形制主图；closed 状态图；open-with-key 状态图；open-empty 状态图。是否每个状态都补图由实际入画和已有参考决定；不能看到状态就全部自动付费生成。</p>
+<p>镜头引用 before 起态和 after 末态要不同；开盒镜头的 before 图不能已经开着。人物身份参考不继承其旧道具持有状态。</p>
+<p>真实视频必须再观察动作是否做出来。文字 E2 通过不能证明视频中的钥匙真的被取出。</p>
+<h2 id="section-5">4. 预演、倒叙与对白覆盖</h2>
+<pre><code data-language="text">故事实际：E1 得盒 → E2 开盒 → E3 去仓库 → E4 陷入危险
+观众播放：P1 preview(E4) → P2 main(E1) → P3 main(E2) → ...</code></pre>
+<p>P1 明确预演，不把 E4 末态改成 E1 初态。再次正篇交付同对白需要明确信息分配，不能无声明重复。观众见过危险，人物此时仍不知道，人物知识和观众知识要分别记录。</p>
+<p>当前程序检查已声明计划、顺序和对白引用；故意误导是否成立仍需语义审查和用户创作意图，不能靠顺序合法证明。</p>
+<h2 id="section-6">5. 未通过候选的局部返修</h2>
+<p>问题：E2 钥匙交接仍写 from=held_by(A)，但 E1 已经交给 B。</p>
+<pre><code data-language="text">用户：按问题局部修复
+程序：repairDraftId → 校验来源指纹、基稿和相同阅读范围
+原作者会话：previousCandidate 精确匹配上一输出时，用 resultBinding
+模型：patches 定位 E2 的具体 changes，修完整同类问题
+程序：在复制的候选上应用补丁 → 完整回放和范围检查
+独立 reviewer：读取修订候选和来源 → 再审查
+保存：新 candidate/repairedFrom；旧失败候选仍在历史中</code></pre>
+<p>最多两轮该任务修复；不进展时停止并保留具体问题。修改范围不能靠创建新 entity 或加字段掩盖错误。若需要改变故事事实，先走采用版本确认。</p>
+<h2 id="section-7">6. 视频采用区间与强承接</h2>
+<p>视频 V1 全长 12 秒，但采用 [2.0, 8.5]；在 8.5 秒前最后可解码证据帧，人物 B 拿着钥匙，盒子打开。</p>
+<pre><code data-language="text">adoption：真实 fileHash、interval、endFrameTime、observedEndState、evidence
+下游 V2：frame_chain → 使用 adoption.endFrameTime 的实际末帧
+新费用计划：绑定该采用签名和真实素材，不引用原片 12 秒末帧</code></pre>
+<p>若 V1 改采用 [2.0, 7.0]，可能尚未完成交接，V2 必须重新核对／失效。没有强依赖的另一房间镜头保留。</p>
+<p>“确认预期末态”必须伴随用户观察依据；不能因为账本写着 B 持钥匙就伪造实际观察。自动抽帧是观察证据，不是动作全程和对白正确性的证明。</p>
+<h2 id="section-8">7. 反馈学习与撤销</h2>
+<p>反馈：短剧开场进入冲突太慢，希望在本作品尽早进入具体阻碍。</p>
+<pre><code data-language="text">明确当前作品反馈 → active preference，条件 presentationMode=fast_drama
+电影转换任务 → 条件不匹配，不注入该经验
+短剧任务 → 选择该规则、revision → 保存应用记录
+审查／用户 → 给出具体片段的 resolved / recurred / misapplied / unknown
+用户确认跨作品 → genre/global 方法，保留必要例子，去除本作品事实
+用户撤销 → suspended，下一会话差异删除，相关候选／审查依据更新</code></pre>
+<p>当前已实现规则记录、条件匹配、应用和验证接口；自动提炼和自动逐条验证未完全闭环。高层 passed 候选复用缺经验版本是待复现风险，不能只看低层 Prompt 已包含经验就宣布撤销通过。</p>
+<h2 id="section-9">8. 故障与恢复</h2>
+<div class="table-wrap"><table><thead><tr><th>故障</th><th>应做什么</th><th>当前要核对</th></tr></thead><tbody><tr><td>Codex 排队时取消</td><td>退出队列，不提交文字请求</td><td>队列／取消测试</td></tr><tr><td>文字超时</td><td>保存失败和会话重同步需求，恢复同职责</td><td>真实长会话压力</td></tr><tr><td>媒体提交有 submit_id，等待超时</td><td>查询原任务，不重新提交</td><td>底层已有逻辑；平台恢复方法归属缺陷</td></tr><tr><td>媒体成功但下载失败</td><td>保留 ID，只恢复下载</td><td>供应商回执与文件证据</td></tr><tr><td>提交可能成功但无可靠 ID</td><td>状态未知，人工核对</td><td>不能盲重提</td></tr><tr><td>服务重启</td><td>旧 Jobs 中断，正式状态不丢</td><td>单数据目录多实例所有权</td></tr><tr><td>执行中换参考</td><td>旧结果保留并标旧依据，不冒充新结果</td><td>单元／旧单镜路径一致性</td></tr></tbody></table></div>
+<p>所有例子都应同时检查结构正确、真实内容、费用记录和用户必要操作。只增加测试数量或 Agent 名称，不足以证明这些场景通过。</p><footer>来源：06-关键场景与任务轨迹.md · 静态代码快照；真实文字、媒体和学习效果需分别验收。</footer></main></div><script>
+const field=document.getElementById('search');const status=document.getElementById('search-status');let hits=[],cursor=-1;
+function clearHits(){document.querySelectorAll('.highlight').forEach(x=>x.classList.remove('highlight'));hits=[];cursor=-1}
+field.addEventListener('input',()=>{clearHits();const q=field.value.trim().toLocaleLowerCase();if(!q){status.textContent='';return}hits=[...document.querySelectorAll('main h2,main h3,main p,main li,main td,main pre')].filter(x=>x.textContent.toLocaleLowerCase().includes(q));status.textContent=hits.length+' 处匹配'});
+function nextHit(){if(!hits.length)return;hits.forEach(x=>x.classList.remove('highlight'));cursor=(cursor+1)%hits.length;const target=hits[cursor];target.classList.add('highlight');target.scrollIntoView({behavior:'smooth',block:'center'});status.textContent=(cursor+1)+' / '+hits.length}
+field.addEventListener('keydown',e=>{if(e.key==='Enter')nextHit()});document.getElementById('next').addEventListener('click',nextHit);document.getElementById('print').addEventListener('click',()=>window.print());
+</script></body></html>

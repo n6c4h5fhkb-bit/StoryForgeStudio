@@ -1,0 +1,61 @@
+{
+  "mediaImages": {
+    "provider": "openai",
+    "baseUrl": "https://YOUR-IMAGE-SERVICE/v1",
+    "model": "YOUR-IMAGE-MODEL",
+    "apiKey": "REPLACE_ME",
+    "useEdits": true,
+    "imageCost": 0,
+    "priceConfigured": false
+  },
+  "mediaVideos": {
+    "provider": "generic",
+    "baseUrl": "https://YOUR-AUTHORIZED-RENDER-SERVICE",
+    "apiKey": "REPLACE_ME",
+    "model": "YOUR-MODEL",
+    "imageCost": 0,
+    "videoCostPerSecond": 0,
+    "priceConfigured": false,
+    "pollSeconds": 3,
+    "timeout": 900,
+    "capabilities": {
+      "referenceImage": true,
+      "firstFrame": true,
+      "extension": false,
+      "referenceVideo": false
+    },
+    "generic": {
+      "image": {
+        "createPath": "/images",
+        "bodyTemplate": {
+          "model": "{{model}}",
+          "prompt": "{{prompt}}",
+          "seed": "{{seed}}",
+          "references": "{{references}}"
+        },
+        "resultPath": "data.url"
+      },
+      "video": {
+        "createPath": "/tasks",
+        "bodyTemplate": {
+          "model": "{{model}}",
+          "prompt": "{{prompt}}",
+          "seed": "{{seed}}",
+          "duration": "{{duration}}",
+          "first_frame": "{{firstFrame}}"
+        },
+        "jobIdPath": "data.id",
+        "pollPath": "/tasks/{id}",
+        "statusPath": "data.status",
+        "resultPath": "data.output.url",
+        "successStatuses": [
+          "succeeded"
+        ],
+        "failureStatuses": [
+          "failed",
+          "cancelled"
+        ]
+      }
+    }
+  }
+}

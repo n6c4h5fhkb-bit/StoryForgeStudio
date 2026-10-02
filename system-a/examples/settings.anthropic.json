@@ -1,0 +1,12 @@
+{
+  "llm": {
+    "provider": "anthropic",
+    "baseUrl": "https://api.anthropic.com/v1",
+    "apiKey": "REPLACE_ME",
+    "model": "YOUR-MODEL-ID",
+    "maxTokens": 6000,
+    "inputPerMillion": 0,
+    "outputPerMillion": 0,
+    "priceConfigured": false
+  }
+}

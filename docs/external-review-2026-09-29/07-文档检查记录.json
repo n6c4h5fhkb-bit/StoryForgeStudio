@@ -1,0 +1,81 @@
+{
+  "format": "ABReviewDocumentQA-v1",
+  "date": "2026-09-29",
+  "sourceFiles": 103,
+  "routes": 165,
+  "markdown": [
+    {
+      "path": "01-评审包说明.md",
+      "characters": 1264,
+      "lines": 40
+    },
+    {
+      "path": "02-AB详细设计文档.md",
+      "characters": 25870,
+      "lines": 728
+    },
+    {
+      "path": "03-外部评估任务书.md",
+      "characters": 3404,
+      "lines": 110
+    },
+    {
+      "path": "04-代码与接口索引.md",
+      "characters": 26677,
+      "lines": 398
+    },
+    {
+      "path": "06-关键场景与任务轨迹.md",
+      "characters": 3497,
+      "lines": 130
+    }
+  ],
+  "html": [
+    {
+      "path": "00-阅读入口.html",
+      "bytes": 5015,
+      "anchors": 0,
+      "links": 11
+    },
+    {
+      "path": "01-评审包说明.html",
+      "bytes": 8991,
+      "anchors": 9,
+      "links": 5
+    },
+    {
+      "path": "02-AB详细设计文档.html",
+      "bytes": 75200,
+      "anchors": 79,
+      "links": 75
+    },
+    {
+      "path": "03-外部评估任务书.html",
+      "bytes": 15613,
+      "anchors": 15,
+      "links": 11
+    },
+    {
+      "path": "04-代码与接口索引.html",
+      "bytes": 52425,
+      "anchors": 17,
+      "links": 11
+    },
+    {
+      "path": "06-关键场景与任务轨迹.html",
+      "bytes": 14236,
+      "anchors": 13,
+      "links": 9
+    }
+  ],
+  "checks": {
+    "balancedCodeFences": true,
+    "uniqueHtmlIds": true,
+    "internalAnchorsResolve": true,
+    "localLinksResolve": true,
+    "noExternalRuntimeAssets": true,
+    "confirmedRecoveryAstFinding": true,
+    "htmlJavaScriptSyntax": true
+  },
+  "limits": "Document structural QA only. No new business test suite, browser screenshot or paid media validation."
+}

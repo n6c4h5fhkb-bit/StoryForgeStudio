@@ -1,0 +1,11 @@
+{
+  "llm": {
+    "provider": "demo"
+  },
+  "media": {
+    "provider": "demo",
+    "priceConfigured": true,
+    "imageCost": 0,
+    "videoCostPerSecond": 0
+  }
+}
