@@ -1,0 +1,40 @@
+{
+  "_note": "Starting defaults, not measured truth. Tune them from your own retention data. Thresholds for hooks and beat gaps come from the earlier Skill's R1-R7 checks and the platform's presets.",
+  "横屏剧集": {
+    "aliases": ["horizontal-episode", "横屏", "剧集", "横屏短剧"],
+    "aspect": "16:9",
+    "episode_seconds": [180, 300],
+    "asl_seconds": [2.0, 4.5],
+    "max_shot_seconds": 8,
+    "hook_seconds": 7,
+    "first_turn_seconds": 20,
+    "max_beat_gap_seconds": 30,
+    "cliff_window_seconds": 20,
+    "speech_rate": 5.0
+  },
+  "竖屏短剧": {
+    "aliases": ["vertical-short", "竖屏", "短剧", "付费短剧"],
+    "aspect": "9:16",
+    "episode_seconds": [60, 150],
+    "asl_seconds": [1.5, 3.0],
+    "max_shot_seconds": 6,
+    "hook_seconds": 3,
+    "first_turn_seconds": 15,
+    "max_beat_gap_seconds": 20,
+    "cliff_window_seconds": 8,
+    "speech_rate": 5.5
+  },
+  "推文": {
+    "aliases": ["promo", "小说推文", "推文视频"],
+    "aspect": "9:16",
+    "episode_seconds": [60, 180],
+    "asl_seconds": [1.8, 3.5],
+    "max_shot_seconds": 6,
+    "hook_seconds": 3,
+    "first_turn_seconds": 15,
+    "max_beat_gap_seconds": 20,
+    "cliff_window_seconds": 10,
+    "speech_rate": 5.5,
+    "narration": true
+  }
+}

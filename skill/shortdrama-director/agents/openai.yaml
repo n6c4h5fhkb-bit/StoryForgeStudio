@@ -1,0 +1,4 @@
+interface:
+  display_name: "短剧导演 2"
+  short_description: "小说改编短剧：大纲、剧本、分镜、Seedance 提示词与参考图清单"
+  default_prompt: "用 $shortdrama-director 把这篇小说改编成横屏短剧，先做第一集：剧本、分镜、每个生成请求的提示词和参考图清单。时长和节奏你按短剧来判断。"

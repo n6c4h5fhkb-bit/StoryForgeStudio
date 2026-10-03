@@ -1,0 +1,31 @@
+{
+  "_note": "One profile per model and channel. 'calibrated' stays null until a real smoke-test run confirms the numbers; configured is not verified.",
+  "seedance-2.0": {
+    "aliases": ["seedance2.0", "seedance 2.0", "seedance2.0fast", "dreamina", "即梦"],
+    "label": "Seedance 2.0（即梦 / Dreamina CLI）",
+    "calibrated": null,
+    "unit_seconds": [4, 15],
+    "whole_seconds": true,
+    "images_max": 9,
+    "images_reliable": 6,
+    "max_shots_per_unit": 4,
+    "handle_seconds": 0.5,
+    "prompt_chars": [120, 700],
+    "reference_token": "@图片{n}",
+    "segment_format": "{a}–{b}秒",
+    "native_audio": true,
+    "ratios": ["16:9", "9:16", "1:1", "4:3", "3:4", "21:9"],
+    "cli": {
+      "executable": "dreamina",
+      "video_command": "multimodal2video",
+      "model_version": "seedance2.0fast",
+      "video_resolution": "720p",
+      "image_text_command": "text2image",
+      "image_edit_command": "image2image",
+      "image_model_version": "5.0",
+      "image_resolution": "2k"
+    },
+    "hard_shots": ["多人肢体接触", "连续打斗", "手部精细操作", "屏幕或纸面上的文字", "液体倾倒", "人群走动"],
+    "sources": "Limits as used by the platform's Dreamina adapter (system-b/tools/render.py); reliable image count from community reports; calibrate before trusting."
+  }
+}
